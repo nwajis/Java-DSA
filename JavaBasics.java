@@ -39,5 +39,23 @@ public class JavaBasics {
         long z = 30;
         long result = x + y + z; // x and y are promoted to long before addition
         System.out.println("Type promotion in expressions: " + result);
+
+
+        //Conditional statements
+        System.out.print("Conditional statements: ");
+        int d1 =sc.nextInt();
+        int d2 = sc.nextInt();
+        if(d1>d2) System.out.println("d1 is larger");
+        else System.out.println("d2 is larger");
+
+
+        // Prime number check
+        System.out.print("Enter a number to check if it's prime: ");
+        int d3 = sc.nextInt();
+        if(d3%2==0 && d3!=2) System.out.println("Not a prime number");
+        else System.out.println("Prime number");
+
+        
+
     }
 }
