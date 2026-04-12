@@ -59,6 +59,12 @@ public class Arrays {
             }
         }
 
+        //Pairs in array
+        public static void pairsInArr(int arr[]){
+
+            
+        }
+
         public static void main(String args[]){
 
             int marks [] = {12,13,15};
