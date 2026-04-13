@@ -62,8 +62,26 @@ public class Arrays {
         //Pairs in array
         public static void pairsInArr(int arr[]){
 
+            int totP = 0;
+
+            for(int i = 0; i < arr.length; i++){
+                int curr = arr[i]; // 50, 40, 30 , 20 , 10
+                for(int j = i+1; j<arr.length; j++){
+                    System.out.print("("+curr+" "+arr[j]+")");
+                    totP++;
+                }
+                System.out.println();
+            }
+            System.out.print("Total Pairs: "+ totP);
+        }
+
+
+        //Subarray
+        public static void subArray(int arr[]){
             
         }
+
+
 
         public static void main(String args[]){
 
@@ -96,6 +114,9 @@ public class Arrays {
             for(int i = 0; i<arr2.length;i++){
                 System.out.print(" "+ arr2[i]);
             }
+
+            System.out.println();
+            pairsInArr(arr2);
 
         }
 }
