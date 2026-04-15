@@ -29,10 +29,31 @@ public class DSA_Sheet {
     }
 
 
+    //Buy Sell Stock
+    public static int buySellStock(int prices[]){
+        int maxProfit = 0;
+        int buyPrice = Integer.MAX_VALUE;
+
+        for(int i = 0 ; i<prices.length; i++){
+            if(buyPrice<prices[i]){
+                int curProfit = prices[i] - buyPrice; // ith day profit
+                maxProfit = Math.max(maxProfit, curProfit); // overall max profit
+            }
+            else{
+                buyPrice = prices[i];
+            }
+        }
+        return maxProfit;
+    }
+
+
 
     public static void main(String args[]){
 
         int arr[] = {4,2,0,6,3,2,5};
-        System.out.println(trappedWater(arr));
+        System.out.println("Trapped Water amount: "+trappedWater(arr));
+
+        int prices[] = {7,1,5,3,6,4};
+        System.out.println("Max Profit: "+buySellStock(prices));
     }
 }
