@@ -61,9 +61,7 @@ public class Arrays {
 
         //Pairs in array
         public static void pairsInArr(int arr[]){
-
             int totP = 0;
-
             for(int i = 0; i < arr.length; i++){
                 int curr = arr[i]; // 50, 40, 30 , 20 , 10
                 for(int j = i+1; j<arr.length; j++){
@@ -76,15 +74,85 @@ public class Arrays {
         }
 
 
-        //Subarray
+        //Print Subarray
         public static void subArray(int arr[]){
-            
+            int totalSubArr = 0;
+            for(int i = 0 ; i<arr.length; i++){
+                int start = i;
+                for(int j = i ; j<arr.length; j++){
+                    int end = j;
+                    for(int k = start; k<=end; k++){
+                        System.out.print(arr[k]+" ");
+                    }
+                    totalSubArr++;
+                    System.out.println();
+                }
+                System.out.println();
+            }
+            System.out.println("Total Sub Arrays: "+totalSubArr);
+        }
+
+        //Maximum Subarray Sum(Brute Force)
+        public static int maxSubArrSum(int arr[]){
+            int maxSum = Integer.MIN_VALUE;
+            for(int i = 0;i<arr.length;i++){
+                int start = i;
+                for(int j = i; j<arr.length;j++){
+                    int end = j;
+                    int currSum = 0;
+                    for(int k = start; k<=end; k++){
+                        currSum += arr[k];
+                    }
+                    if(currSum>maxSum) maxSum = currSum;
+                }
+            }
+            return maxSum;
+        }
+
+        //Max Sub array sum( Prefix sum)
+        public static int maxSubArrPre(int arr[]){
+
+            int curSum=0;
+            int maxSum = Integer.MIN_VALUE;
+
+            //Prefix array
+            int prefixArr[] = new int [arr.length]; 
+            prefixArr[0] = arr[0];
+            for(int i = 1; i<arr.length; i++){
+                prefixArr[i] = prefixArr[i-1]+ arr[i];
+            }
+
+            for(int i =0; i<arr.length; i++){
+                int start = i;
+                for(int j = i; j<arr.length; j++){
+                    int end = j;
+                    curSum = start == 0 ? prefixArr[end] : prefixArr[end] - prefixArr[start-1];
+                    if(maxSum<curSum) maxSum = curSum;
+                }
+            }
+            return maxSum;
+        }
+
+
+        //Kadanes algorithm for subarray sum
+        public static int kadanes(int arr[]){
+            int maxSum = Integer.MIN_VALUE;
+            int currSum = 0;
+            for(int i = 0; i<arr.length;i++){
+                currSum = currSum + arr[i];
+                maxSum = Math.max(currSum, maxSum);
+                if(currSum<0){
+                    currSum = 0;
+                }
+            }
+            return maxSum;
         }
 
 
 
         public static void main(String args[]){
 
+            int amray[] = new int[6];
             int marks [] = {12,13,15};
 
             updateMarks(marks);
@@ -117,6 +185,19 @@ public class Arrays {
 
             System.out.println();
             pairsInArr(arr2);
+
+            System.out.println();
+            subArray(arr2);
+            
+
+            int arr3[] = {-1,-2,-3,-4,-5,-10};
+            System.out.println();
+            System.out.println("Max sub array sum: "+maxSubArrSum(arr3));
+
+            System.out.println("Max sub array(prefix): "+ maxSubArrPre(arr3));
+
+            System.out.println("Max sub array sum using kadanes algo: "+kadanes(arr3));
+
 
         }
 }
