@@ -1,7 +1,7 @@
 import java.util.*;
 public class JavaBasics {
     public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
+        try(Scanner sc = new Scanner(System.in)){
 
         System.out.print("Number 1: ");
         int n1 = sc.nextInt();
@@ -55,7 +55,9 @@ public class JavaBasics {
         if(d3%2==0 && d3!=2) System.out.println("Not a prime number");
         else System.out.println("Prime number");
 
-        
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 }

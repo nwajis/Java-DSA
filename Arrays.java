@@ -1,4 +1,3 @@
-import java.util.*;
 public class Arrays {
     
     
@@ -153,6 +152,7 @@ public class Arrays {
         public static void main(String args[]){
 
             int amray[] = new int[6];
+            amray[0] = 1;
             int marks [] = {12,13,15};
 
             updateMarks(marks);

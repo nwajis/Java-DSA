@@ -1,9 +1,9 @@
 import java.util.*;
 public class BasicQues {
     public void main(String[] args){
-
-        Scanner sc = new Scanner(System.in);
-
+    
+        try (Scanner sc = new Scanner(System.in)) {
+    
         // Reverse a number
         int num = 12345;
         int num2 = 123445;
@@ -48,5 +48,9 @@ public class BasicQues {
 
             System.out.println("entered num was: "+noii);
         }while(true);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
